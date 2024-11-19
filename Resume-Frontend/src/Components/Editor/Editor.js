@@ -21,7 +21,7 @@ function Editor (props) {
     sections[Object.keys(sections)[0]]
   )
   const [values, setValues] = useState({
-    fullname: activeInformation?.detail?.fullname || '',
+    name: activeInformation?.detail?.name || '',
     title: activeInformation?.detail?.title || '',
     linkedin: activeInformation?.detail?.linkedin || '',
     github: activeInformation?.detail?.github || '',
@@ -229,9 +229,9 @@ function Editor (props) {
         <InputControl
           label='Name'
           placeholder='Enter your full name eg. Aashu'
-          value={values.fullname}
+          value={values.name}
           onChange={event =>
-            setValues(prev => ({ ...prev, fullname: event.target.value }))
+            setValues(prev => ({ ...prev, name: event.target.value }))
           }
         />
         <InputControl
@@ -358,7 +358,7 @@ function Editor (props) {
     switch (sections[activeSectionKey]) {
       case sections.basicInfo: {
         const tempDetail = {
-          fullname: values.fullname,
+          name: values.name,
           title: values.title,
           linkedin: values.linkedin,
           github: values.github,
@@ -460,7 +460,7 @@ function Editor (props) {
           ...prev,
           [sections.summary]: {
             ...prev[sections.summary],
-            summary: tempDetail,
+            detail: tempDetail,
             sectionTitle
           }
         }))
@@ -473,7 +473,7 @@ function Editor (props) {
           ...prev,
           [sections.other]: {
             ...prev[sections.other],
-            other: tempDetail,
+            detail: tempDetail,
             sectionTitle
           }
         }))
@@ -557,8 +557,8 @@ function Editor (props) {
         : activeInfo?.detail?.github || '',
       phone: activeInfo?.detail?.phone || '',
       email: activeInfo?.detail?.email || '',
-      summary: typeof activeInfo?.summary !== 'object' ? activeInfo.summary : '',
-      other: typeof activeInfo?.other !== 'object' ? activeInfo.other : ''
+      summary: activeInfo?.detail?.summary || '',
+      other: activeInfo?.detail?.other || '',
     })
   }, [activeSectionKey])
 

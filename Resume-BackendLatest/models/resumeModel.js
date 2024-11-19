@@ -51,7 +51,7 @@ const workExpSchema = new mongoose.Schema({
         type: Date,
     },
     points: {
-        type: String,
+       type: [String],
        
     }
 });
@@ -72,7 +72,11 @@ const projectchmea = new mongoose.Schema({
     github: {
         type: String,
         
-    }
+    },
+    points: {
+        type: [String],
+        
+     }
 });
 
 const educationSchema = new mongoose.Schema({
@@ -94,7 +98,7 @@ const educationSchema = new mongoose.Schema({
 
 const achievementSchema = new mongoose.Schema({
     points: {
-        type: String,
+        type: [String],
        
     }
 });
