@@ -5,8 +5,5 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/app.js" }
-  ],
-  "scripts": {
-        "build": "npm install --force && npm run build"
-    }
+  ]
 }
