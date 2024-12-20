@@ -4,8 +4,8 @@ import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg
 import { io } from 'socket.io-client';
 import Swal from 'sweetalert2'; // Import SweetAlert
 import '../styles/Contact.css';
-
-const socket = io('http://localhost:5000'); // Adjust if your server is hosted elsewhere
+import {url} from '../api/apiendpoint';
+const socket = io(url); // Adjust if your server is hosted elsewhere
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:5000/api/contacts', {
+      const response = await fetch(url+'/api/contacts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

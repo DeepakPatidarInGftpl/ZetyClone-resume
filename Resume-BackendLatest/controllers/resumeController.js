@@ -11,16 +11,39 @@ const { generateDOCX } = require("../utils/generateDOCX.js");
 // const __dirname = path.dirname(__filename);
 
 exports.createResume = async (req, res, next) => {
-    const {
-        basicInfo,
-        workExp = [],
-        project = [],
-        education = [],
-        achievement = [],
-        summary,
-        other
-    } = req.body;
+    
+    // const {
+    //     'Basic Info',
+    //     workExp = [],
+    //     project = [],
+    //     education = [],
+    //     achievement = [],
+    //     summary,
+    //     other
+    // } = req.body;
+   
 
+    const basicInfo = req.body['Basic Info'];
+    const workExp = req.body['Work Experience'];
+    const project = req.body['Projects'];
+    const education = req.body['Education'];
+    const achievement = req.body['Achievements'];
+    const summary = req.body['Summary'];
+    const other = req.body['Other'];
+
+    workExp.details = JSON.parse(workExp.details);
+    project.details = JSON.parse(project.details);
+    education.details = JSON.parse(education.details);
+
+
+    // console.log(basicInfo);
+    // console.log(workExp);
+    // console.log(project);
+    // console.log(education);
+    // console.log(achievement);
+    // console.log(summary);
+    // console.log(other);
+    // return
     let img = null;
     if (req.file) {
         const imgPath = path.join(__dirname, '../uploads', req.file.filename);

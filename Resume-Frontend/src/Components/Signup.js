@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2'; // Import SweetAlert
 import '../styles/Signup.css';
-
+import {url} from '../api/apiendpoint';
 const Signup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -54,7 +54,7 @@ const Signup = () => {
 
     if (Object.keys(newErrors).length === 0) {
       try {
-        const response = await axios.post('http://localhost:5000/api/auth/register', formData);
+        const response = await axios.post(url+'/api/auth/register', formData);
         Swal.fire({
           icon: 'success',
           title: 'Signup Successful!',
@@ -76,9 +76,9 @@ const Signup = () => {
 
   const handleSocialLogin = (platform) => {
     if (platform === 'Google') {
-      window.location.href = 'http://localhost:5000/api/auth/google';
+      window.location.href = url+'/api/auth/google';
     } else if (platform === 'Facebook') {
-      window.location.href = 'http://localhost:5000/api/auth/facebook';
+      window.location.href = url+'/api/auth/facebook';
     } else if (platform === 'Apple') {
       console.log(`Sign up with ${platform}`);
     }

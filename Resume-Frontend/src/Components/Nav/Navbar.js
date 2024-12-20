@@ -27,7 +27,9 @@ const Navbar = () => {
         ☰
       </button>
       <div className={`navbar-menu ${menuOpen ? 'open' : ''}`}>
-        <Link to="/"> <a to="/" >Home</a></Link>
+        <Link to="/">
+         <span >Home</span>
+        </Link>
         {/* Tools Dropdown */}
         <div
           className="navbar-item"

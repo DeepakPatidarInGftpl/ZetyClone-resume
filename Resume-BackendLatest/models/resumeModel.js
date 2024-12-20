@@ -1,109 +1,103 @@
 const mongoose = require("mongoose");
 
 const basicInfoSchema = new mongoose.Schema({
-    name: {
+    id:  {
         type: String,
-        
     },
-    title: {
+    sectionTitle: {
         type: String,
-       
     },
-    linkedin: {
-        type: String,
-       
-    },
-    github: {
-        type: String,
-       
-    },
-    email: {
-        type: String,
-       
-    },
-    phone: {
-        type: String,
-       
+    detail : {
+        name: {
+            type: String,
+            
+        },
+        title: {
+            type: String,
+           
+        },
+        linkedin: {
+            type: String,
+           
+        },
+        github: {
+            type: String,
+           
+        },
+        email: {
+            type: String,
+           
+        },
+        phone: {
+            type: String,
+           
+        }
     }
+   
 });
 
 const workExpSchema = new mongoose.Schema({
-    title: {
+
+    id: {
         type: String,
-       
     },
-    companyName: {
+    sectionTitle: {
         type: String,
-       
     },
-    certificationLink: {
-        type: String,
-       
-    },
-    location: {
-        type: String,
-        
-    },
-    startDate: {
-        type: Date,
-    },
-    endDate: {
-        type: Date,
-    },
-    points: {
-       type: [String],
-       
-    }
+    details: []
+   
 });
 
 const projectchmea = new mongoose.Schema({
-    title: {
+
+    id: {
         type: String,
-       
     },
-    link: {
+    sectionTitle: {
         type: String,
-       
     },
-    overview: {
-        type: String,
-       
-    },
-    github: {
-        type: String,
-        
-    },
-    points: {
-        type: [String],
-        
-     }
+    details: []
+    
 });
 
 const educationSchema = new mongoose.Schema({
-    title: {
+
+    id: {
         type: String,
-       
     },
-    college: {
+    sectionTitle: {
         type: String,
-       
     },
-    startDate: {
-        type: Date,
-    },
-    endDate: {
-        type: Date,
-    },
+    details: []
+ 
 });
 
 const achievementSchema = new mongoose.Schema({
+    id: {
+        type: String,
+    },
+    sectionTitle:{
+        type: String,
+    },
     points: {
         type: [String],
-       
     }
 });
 
 const summarySchema = new mongoose.Schema({
+    
+    id : {
+        type: String,
+    },
+    sectionTitle :{
+        type: String
+    },
+    summary :{
+        type: String,
+    },
+    detail :{
+        type: String,
+    },
     summary: {
         type: String,
        
@@ -111,9 +105,20 @@ const summarySchema = new mongoose.Schema({
 });
 
 const otherSchema = new mongoose.Schema({
+ 
+    id : {
+        type: String,
+      
+    },
+    sectionTitle : {
+        type: String,
+    },
     other: {
         type: String,
         
+    },
+    detail : {
+        type: String,
     }
 });
 

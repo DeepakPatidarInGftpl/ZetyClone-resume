@@ -3,6 +3,7 @@ import './Login.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2'; // Import SweetAlert2
+import { url } from '../../api/apiendpoint';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ const Login = () => {
     if (!isValid) return;
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const response = await axios.post(url+'/api/auth/login', { email, password });
       localStorage.setItem('authToken', response.data.token);
 
       // Show success alert
@@ -78,11 +79,11 @@ const Login = () => {
 
   // OAuth login handlers
   const handleGoogleSignIn = () => {
-    window.location.href = 'http://localhost:5000/api/auth/google';
+    window.location.href = url+'/api/auth/google';
   };
 
   const handleFacebookSignIn = () => {
-    window.location.href = 'http://localhost:5000/api/auth/facebook';
+    window.location.href = url+'/api/auth/facebook';
   };
 
   return (

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';  // Import SweetAlert
 import '../styles/Payment.css';
-
+import {url} from '../api/apiendpoint';
 function PaymentForm({ selectedPlan, onPaymentSuccess }) {
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
@@ -21,7 +21,7 @@ function PaymentForm({ selectedPlan, onPaymentSuccess }) {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/pricing', paymentData);
+      const response = await axios.post(url+'/api/pricing', paymentData);
       console.log(response.data.message);
       Swal.fire('Success', response.data.message, 'success'); // Show success SweetAlert
       onPaymentSuccess();

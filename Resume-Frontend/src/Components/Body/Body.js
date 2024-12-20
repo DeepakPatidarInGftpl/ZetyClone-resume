@@ -7,7 +7,7 @@ import Editor from "../Editor/Editor";
 import Resume from "../Resume/Resume";
 import Header from "../Header/Header";
 import styles from "./Body.module.css";
-
+import {url} from "../../api/apiendpoint";
 function Body() {
   const colors = ["#239ce2", "#48bb78", "#0bc5ea", "#a0aec0", "#ed8936"];
   const sections = {
@@ -62,9 +62,28 @@ function Body() {
 
   // Function to handle the resume data submission to the API
   const saveResumeToServer = async () => {
-    console.log("Sending resume information:", resumeInformation); // Log the data before sending
+    const updatedResumeInfo = {
+      ...resumeInformation,
+      [sections.workExp]: {
+        ...resumeInformation[sections.workExp],
+        details: JSON.stringify(resumeInformation[sections.workExp].details),
+      },
+      [sections.project]: {
+        ...resumeInformation[sections.project],
+        details: JSON.stringify(resumeInformation[sections.project].details),
+      },
+      [sections.education]: {
+        ...resumeInformation[sections.education],
+        details: JSON.stringify(resumeInformation[sections.education].details),
+      },
+    };
+  //  await setResumeInformation(updatedResumeInfo);
+    console.log("Sending resume information:", updatedResumeInfo); // Log the data before sending
+
+
+   
     try {
-      const response = await axios.post("http://localhost:5000/api/resume/create", resumeInformation);
+      const response = await axios.post(url+"/api/resume/create", updatedResumeInfo);
       console.log("Response from server:", response.data);
       alert("Resume saved successfully!");
     } catch (error) {

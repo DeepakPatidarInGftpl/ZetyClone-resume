@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'; // Import SweetAlert
 import '../styles/Account.css';
-
+import {url} from '../api/apiendpoint';
 function Account() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ function Account() {
           return;
         }
 
-        const res = await axios.get('http://localhost:5000/api/auth/profile', {
+        const res = await axios.get(url+'/api/auth/profile', {
           headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -57,7 +57,7 @@ function Account() {
       }
   
       await axios.put(
-        'http://localhost:5000/api/auth/profile',
+        url+'/api/auth/profile',
         formData,
         {
           headers: {
